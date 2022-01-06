@@ -1,6 +1,6 @@
 # jimmer
 
-> A Vue.js project
+> 前端金丹期辅助凝结法
 
 ## Build Setup
 
