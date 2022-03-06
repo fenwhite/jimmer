@@ -11,11 +11,9 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        tagert: 'http:localhost:8080',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': '/api'
-        }
+        logLevel: 'info',
+        tagert: 'http://localhost:8080',
+        changeOrigin: true
       }
     },
 
