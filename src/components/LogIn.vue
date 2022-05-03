@@ -1,29 +1,35 @@
 <template>
     <div>
-      user name: <input type="text" v-model="userForm.name" placeholder="user name"/>
+      user name: <input type="text" v-model="userForm.Name" placeholder="user name"/>
       <br/>
-      passWord : <input type="password" v-model="userForm.passWord" placeholder="password"/>
+      passWord : <input type="password" v-model="userForm.Password" placeholder="password"/>
       <br/>
       <button @click="login">log in</button>
     </div>
 </template>
 
 <script>
+import {encrypt} from '../utils/encrypt.js'
+
 export default {
   name: 'Login',
   data () {
     return {
       userForm: {
-        name: '',
-        passWord: ''
+        Name: '',
+        Password: ''
       }
     }
   },
   methods: {
     login () {
-      this.$axios.post('/api/login', this.userForm).then((result) => {
-        if (result.data.code === 200) {
+      this.userForm.Password = encrypt(this.userForm.Password)
+      this.$axios.post('http://localhost:8080/login', this.userForm).then((result) => {
+        console.log(result)
+        if (result.data.Code === 200) {
           this.$router.replace({path: '/HelloWorld'})
+        } else {
+          console.log('login error')
         }
       }).catch((err) => {
         console.log(err)
