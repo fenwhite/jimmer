@@ -124,3 +124,6 @@ selenium-debug.log
 # my config
 /config/test.env.js
 /config/prod.env.js
+
+# mock js
+/src/mock/
